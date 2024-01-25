@@ -1,3 +1,14 @@
+Splash Screen Generator:
+https://progressier.com/pwa-icons-and-ios-splash-screen-generator
+
+Maskable Icon Generator:
+https://progressier.com/maskable-icons-editor
+
+VAPID Key Generator:
+https://www.stephane-quantin.com/en/tools/generators/vapid-keys
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
