@@ -22,12 +22,12 @@ export async function GET(request: Request) {
     return new ImageResponse(
       (
         <div
-          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-black`}
+          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
         >
           <div tw={`flex`}>
-            <img width="256" height="256" src={imageData} />
+            <img tw={"h-full max-h-96 max-w-96"} src={imageData} />
           </div>
-          <div tw="ml-2 text-xl">{siteConfig.name}</div>
+          <div tw="ml-2 text-4xl">{siteConfig.name}</div>
         </div>
       ),
       {

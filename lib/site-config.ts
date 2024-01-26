@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Next.js PWA WebPush Template",
   themeColor: "#fcd7a6",
+  textColor: "#000000",
   description: "Example Next.js App Showcasing PWA and WebPush Notifications",
   authors: [{ name: "Brandin Canfield", url: "https://github.com/bcanfield" }],
   creator: "Brandin Canfield",

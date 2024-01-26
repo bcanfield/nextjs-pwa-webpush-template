@@ -17,10 +17,10 @@ export default async function Image() {
   return new ImageResponse(
     (
       <div
-        tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-black`}
+        tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
       >
         <div tw={`flex`}>
-          <img tw={"h-full"} src={imageData} />
+          <img tw={"h-full max-h-96 max-w-96"} src={imageData} />
         </div>
         <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
           {siteConfig.name}
