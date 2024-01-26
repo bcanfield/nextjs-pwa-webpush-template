@@ -44,25 +44,32 @@ export function generateImageMetadata() {
 }
 
 export default async function Icon({ id }: { id: string }) {
-  const imageData = (await fetch(
-    new URL("./custom-icon.png", import.meta.url)
-  ).then((res) => res.arrayBuffer())) as string;
-  return new ImageResponse(
-    (
-      <div
-        tw={`flex items-center justify-center ${
-          id === "icon_2xl" ? `bg-[${siteConfig.themeColor}]` : ""
-        } w-full h-full p-4`}
-      >
-        <div tw={`flex`}>
-          <img tw={"h-full"} alt={id} src={imageData} />
+  try {
+    const imageData = (await fetch(
+      new URL("./custom-icon.png", import.meta.url)
+    ).then((res) => res.arrayBuffer())) as string;
+    return new ImageResponse(
+      (
+        <div
+          tw={`flex items-center justify-center ${
+            id === "icon_2xl" ? `bg-[${siteConfig.themeColor}]` : ""
+          } w-full h-full p-4`}
+        >
+          <div tw={`flex`}>
+            <img tw={"h-full"} alt={id} src={imageData} />
+          </div>
         </div>
-      </div>
-    ),
-    {
-      width: 512,
-      height: 512,
-      debug: true,
-    }
-  );
+      ),
+      {
+        width: 512,
+        height: 512,
+        debug: true,
+      }
+    );
+  } catch (e: any) {
+    console.log(`${e.message}`);
+    return new Response(`Failed to generate the image`, {
+      status: 500,
+    });
+  }
 }

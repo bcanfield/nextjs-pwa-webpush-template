@@ -1,4 +1,4 @@
-// import { siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
@@ -11,25 +11,31 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
-  // const imageData = (await fetch(
-  //   new URL("./custom-icon.png", '')
-  // ).then((res) => res.arrayBuffer())) as string;
-  return new ImageResponse(
-    (
-      <div
-        // tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
-        tw={`flex p-8 items-center justify-center w-full h-full bg-[black] text-[black]`}
-      >
-        <div tw={`flex`}>
-          {/* <img tw={"h-full max-h-96 max-w-96"} src={imageData} /> */}
+  try {
+    const imageData = (await fetch(new URL("./custom-icon.png", "")).then(
+      (res) => res.arrayBuffer()
+    )) as string;
+    return new ImageResponse(
+      (
+        <div
+          tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
+        >
+          <div tw={`flex`}>
+            <img tw={"h-full max-h-96 max-w-96"} src={imageData} />
+          </div>
+          <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
+            Test
+          </div>
         </div>
-        <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
-          Test
-        </div>
-      </div>
-    ),
-    {
-      ...size,
-    }
-  );
+      ),
+      {
+        ...size,
+      }
+    );
+  } catch (e: any) {
+    console.log(`${e.message}`);
+    return new Response(`Failed to generate the image`, {
+      status: 500,
+    });
+  }
 }
