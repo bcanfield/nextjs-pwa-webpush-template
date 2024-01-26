@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "lazyfasttrack";
+export const alt = "Next.js PWA WebPush Template";
 export const size = {
   width: 1200,
   height: 630,

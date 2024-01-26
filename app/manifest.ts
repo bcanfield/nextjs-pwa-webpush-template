@@ -8,13 +8,19 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         purpose: "maskable",
         sizes: "512x512",
-        src: "apple-icon.png",
+        src: "/icon/icon_maskable",
+        type: "image/png",
+      },
+      {
+        purpose: "any",
+        sizes: "48x48",
+        src: "/icon/icon",
         type: "image/png",
       },
       {
         purpose: "any",
         sizes: "512x512",
-        src: "icon.png",
+        src: "/icon/icon_medium",
         type: "image/png",
       },
     ],
