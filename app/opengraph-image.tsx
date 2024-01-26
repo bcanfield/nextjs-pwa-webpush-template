@@ -1,7 +1,7 @@
 // import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export const alt = "Next.js PWA WebPush Template";
 export const size = {
