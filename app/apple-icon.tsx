@@ -15,7 +15,7 @@ export default async function Icon() {
     return new ImageResponse(
       (
         <div
-          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}]`}
+          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] p-2`}
         >
           <div tw={"flex h-full"}>{appIcon}</div>
         </div>

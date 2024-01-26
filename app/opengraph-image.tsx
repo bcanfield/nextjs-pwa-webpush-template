@@ -13,9 +13,6 @@ export const contentType = "image/png";
 
 export default async function Image() {
   try {
-    const imageData = (await fetch(
-      new URL("./custom-icon.png", import.meta.url)
-    ).then((res) => res.arrayBuffer())) as string;
     return new ImageResponse(
       (
         <div
