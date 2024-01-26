@@ -1,14 +1,6 @@
 self.addEventListener("push", async (event) => {
-  console.log("PUSH", { event });
-
-  console.log("in here 1");
   if (event.data) {
-    console.log("in here 2");
-
-    // const eventData = await event.data.json();
     const eventData = await event.data.json();
-    console.log("in here 3", { eventData });
-
     showLocalNotification(eventData.title, eventData.body, self.registration);
     navigator.setAppBadge(1);
   }

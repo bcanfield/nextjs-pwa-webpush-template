@@ -1,39 +1,29 @@
+import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
-// Route segment config
 export const runtime = "edge";
 
-// Image metadata
 export const size = {
   width: 32,
   height: 32,
 };
 export const contentType = "image/png";
 
-// Image generation
-export default function Icon() {
+export default async function Icon() {
+  const imageData = (await fetch(
+    new URL("./custom-icon.png", import.meta.url)
+  ).then((res) => res.arrayBuffer())) as string;
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
-        style={{
-          fontSize: 24,
-          background: "black",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-        }}
+        tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}]`}
       >
-        Ap
+        <div tw={`flex items-center justify-center`}>
+          <img tw={"h-full"} src={imageData} />
+        </div>
       </div>
     ),
-    // ImageResponse options
     {
-      // For convenience, we can re-use the exported icons size metadata
-      // config to also set the ImageResponse's width and height.
       ...size,
     }
   );

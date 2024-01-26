@@ -1,61 +1,68 @@
+import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
-import AppIcon from "./custom-icon";
 
 export const runtime = "edge";
 
 export function generateImageMetadata() {
   return [
     {
-      contentType: "image/png",
-      size: { width: 48, height: 48 },
-      id: "icon_small",
-    },
-    {
-      contentType: "image/png",
-      size: { width: 256, height: 256 },
-      id: "icon_medium",
-    },
-    {
       contentType: "image/x-icon",
-      size: { width: 16, height: 16 },
+      size: { width: 192, height: 192 },
       id: "favicon",
     },
     {
       contentType: "image/png",
+      size: { width: 16, height: 16 },
+      id: "icon_xs",
+    },
+    {
+      contentType: "image/png",
+      size: { width: 32, height: 32 },
+      id: "icon_sm",
+    },
+    {
+      contentType: "image/png",
+      size: { width: 64, height: 64 },
+      id: "icon_md",
+    },
+    {
+      contentType: "image/png",
+      size: { width: 128, height: 128 },
+      id: "icon_lg",
+    },
+    {
+      contentType: "image/png",
+      size: { width: 256, height: 256 },
+      id: "icon_xl",
+    },
+    {
+      contentType: "image/png",
       size: { width: 512, height: 512 },
-      id: "icon_maskable",
+      id: "icon_2xl",
     },
   ];
 }
 
-export default function Icon({
-  id,
-}: // size,
-{
-  id: string;
-  // size: { width: number; height: number };
-}) {
-  // console.log({ size });
+export default async function Icon({ id }: { id: string }) {
+  const imageData = (await fetch(
+    new URL("./custom-icon.png", import.meta.url)
+  ).then((res) => res.arrayBuffer())) as string;
   return new ImageResponse(
     (
       <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 88,
-          background: "#000",
-          color: "#fafafa",
-        }}
+        tw={`flex items-center justify-center ${
+          id === "icon_2xl" ? `bg-[${siteConfig.themeColor}]` : ""
+        } w-full h-full p-4`}
       >
-        <AppIcon />
+        <div tw={`flex`}>
+          <img tw={"h-full"} alt={id} src={imageData} />
+        </div>
       </div>
     ),
     {
       width: 512,
       height: 512,
+      debug: true,
     }
   );
 }

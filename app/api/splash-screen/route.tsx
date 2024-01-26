@@ -1,4 +1,4 @@
-import AppIcon from "@/app/custom-icon";
+import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
@@ -15,38 +15,19 @@ export async function GET(request: Request) {
       throw new Error("Missing device parameters");
     }
 
+    const imageData = (await fetch(
+      new URL("../../custom-icon.png", import.meta.url)
+    ).then((res) => res.arrayBuffer())) as string;
+
     return new ImageResponse(
       (
         <div
-          style={{
-            display: "flex",
-            flexDirection: orientation === "portrait" ? "column" : "row",
-            fontSize: 40,
-            color: "black",
-            background: "white",
-            width: "100%",
-            height: "100%",
-            textAlign: "center",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-black`}
         >
-          <div
-            style={{
-              display: "flex",
-              fontSize: 40,
-              color: "black",
-              background: "white",
-              width: 200,
-              height: 200,
-              textAlign: "center",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <AppIcon />
+          <div tw={`flex`}>
+            <img width="256" height="256" src={imageData} />
           </div>
-          Next.js PWA WebPush Template
+          <div tw="ml-2 text-xl">{siteConfig.name}</div>
         </div>
       ),
       {

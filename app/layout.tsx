@@ -221,35 +221,23 @@ const mediaInfoArray: MediaInfo[] = [
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  // metadataBase: new URL("https://localhost:3000/"),
-
   title: {
-    default: "Next.js PWA WebPush Template",
-    template: "%s | Next.js PWA WebPush Template",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "Example Next.js App Showcasing PWA and WebPush Notifications",
-  applicationName: "Next.js PWA WebPush Template",
-  authors: [{ name: "Brandin Canfield", url: "https://github.com/bcanfield" }],
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: siteConfig.authors,
   generator: "Next.js",
-  keywords: [
-    "nextjs",
-    "pwa",
-    "webpush",
-    "notifications",
-    "template",
-    "example",
-    "progressive",
-    "web",
-    "app",
-  ],
+  keywords: siteConfig.keywords,
   icons: [],
-  creator: "Brandin Canfield",
+  creator: siteConfig.creator,
   publisher: "Vercel",
   robots: "index,follow",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Next.js PWA WebPush Template",
+    title: siteConfig.name,
     startupImage: mediaInfoArray.map(
       ({ deviceHeight, deviceWidth, devicePixelRatio, orientation }) => {
         return {
@@ -262,7 +250,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#030504",
+  themeColor: siteConfig.themeColor,
   userScalable: false,
   initialScale: 1,
   maximumScale: 1,

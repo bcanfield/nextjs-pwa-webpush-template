@@ -1,4 +1,4 @@
-import AppIcon from "@/app/custom-icon";
+import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
@@ -11,34 +11,20 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
+  const imageData = (await fetch(
+    new URL("./custom-icon.png", import.meta.url)
+  ).then((res) => res.arrayBuffer())) as string;
   return new ImageResponse(
     (
       <div
-        style={{
-          display: "flex",
-          gap: 4,
-          fontSize: 40,
-          color: "#f6f6f6",
-          background: "black",
-          width: "100%",
-          height: "100%",
-          paddingTop: 50,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-black`}
       >
-        <div
-          style={{
-            display: "flex",
-            width: 200,
-            height: 200,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <AppIcon />
+        <div tw={`flex`}>
+          <img tw={"h-full"} src={imageData} />
         </div>
-        Next.js PWA WebPush Template
+        <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
+          {siteConfig.name}
+        </div>
       </div>
     ),
     {
