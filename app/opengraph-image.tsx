@@ -1,67 +1,46 @@
 import { ImageResponse } from "next/og";
-import appIcon from "@/public/avacado.svg";
-// import appImage from "@/public/avacado.png";
-
-// Route segment config
+// https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx
 export const runtime = "edge";
 
-// Image metadata
-export const alt = "About Acme";
+export const alt = "lazyfasttrack";
 export const size = {
   width: 1200,
   height: 630,
 };
-
 export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
-  // Font
-  // const interSemiBold = fetch(
-  //   new URL("./Inter-SemiBold.ttf", import.meta.url)
-  // ).then((res) => res.arrayBuffer());
-
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
-          fontSize: 128,
-          background: "white",
+          display: "flex",
+          fontSize: 60,
+          color: "#f6f6f6",
+          background: "black",
           width: "100%",
           height: "100%",
-          display: "flex",
-          alignItems: "center",
+          paddingTop: 50,
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="avatar"
           width="256"
-          src={appIcon}
+          src={"/next.svg"}
           style={{
             borderRadius: 128,
           }}
         />
-        {/* <p>github.com/{username}</p> */}
-        {/* </div> */}
-        {/* {appIcon} */}
+
+        <h1>lazyfasttrack</h1>
       </div>
     ),
-    // ImageResponse options
     {
-      // For convenience, we can re-use the exported opengraph-image
-      // size config to also set the ImageResponse's width and height.
       ...size,
-      // fonts: [
-      //   {
-      //     name: "Inter",
-      //     data: await interSemiBold,
-      //     style: "normal",
-      //     weight: 400,
-      //   },
-      // ],
     }
   );
 }
