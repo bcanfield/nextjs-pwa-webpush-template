@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -219,8 +220,8 @@ const mediaInfoArray: MediaInfo[] = [
 ];
 
 export const metadata: Metadata = {
-  // metadataBase: new URL("https://nextjs-pwa-webpush-template.vercel.app/"),
-  metadataBase: new URL("https://localhost:3000/"),
+  metadataBase: new URL(siteConfig.url),
+  // metadataBase: new URL("https://localhost:3000/"),
 
   title: {
     default: "Next.js PWA WebPush Template",
