@@ -1,8 +1,8 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
+import { appIcon } from "./custom-icons";
 
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
 
 export const size = {
   width: 32,
@@ -12,19 +12,12 @@ export const contentType = "image/png";
 
 export default async function Icon() {
   try {
-    const metaUrl = import.meta.url;
-    console.log({ metaUrl });
-    const imageData = (await fetch(new URL("./custom-icon.png", metaUrl)).then(
-      (res) => res.arrayBuffer()
-    )) as string;
     return new ImageResponse(
       (
         <div
           tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}]`}
         >
-          <div tw={`flex items-center justify-center`}>
-            <img tw={"h-full"} src={imageData} />
-          </div>
+          <div tw={"flex h-full"}>{appIcon}</div>
         </div>
       ),
       {

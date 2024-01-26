@@ -1,8 +1,9 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
+import { appIcon } from "./custom-icons";
 
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+
 export function generateImageMetadata() {
   return [
     {
@@ -45,9 +46,6 @@ export function generateImageMetadata() {
 
 export default async function Icon({ id }: { id: string }) {
   try {
-    const imageData = (await fetch(
-      new URL("./custom-icon.png", import.meta.url)
-    ).then((res) => res.arrayBuffer())) as string;
     return new ImageResponse(
       (
         <div
@@ -55,9 +53,7 @@ export default async function Icon({ id }: { id: string }) {
             id === "icon_2xl" ? `bg-[${siteConfig.themeColor}]` : ""
           } w-full h-full p-4`}
         >
-          <div tw={`flex`}>
-            <img tw={"h-full"} alt={id} src={imageData} />
-          </div>
+          <div tw={"flex h-full"}>{appIcon}</div>
         </div>
       ),
       {

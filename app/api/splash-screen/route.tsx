@@ -1,3 +1,4 @@
+import { appIcon } from "@/app/custom-icons";
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
@@ -23,9 +24,7 @@ export async function GET(request: Request) {
         <div
           tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
         >
-          <div tw={`flex`}>
-            <img tw={"h-full max-h-96 max-w-96"} src={imageData} />
-          </div>
+          <div tw={"flex h-full max-h-96 max-w-96"}>{appIcon}</div>
           <div tw="ml-2 text-4xl">{siteConfig.name}</div>
         </div>
       ),

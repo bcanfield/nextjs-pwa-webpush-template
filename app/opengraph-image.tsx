@@ -1,5 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
+import { appIcon } from "./custom-icons";
 
 export const runtime = "nodejs";
 
@@ -9,7 +10,6 @@ export const size = {
   height: 630,
 };
 export const contentType = "image/png";
-export const dynamic = "force-dynamic";
 
 export default async function Image() {
   try {
@@ -21,9 +21,7 @@ export default async function Image() {
         <div
           tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
         >
-          <div tw={`flex`}>
-            <img tw={"h-full max-h-96 max-w-96"} src={imageData} />
-          </div>
+          <div tw={"flex h-full max-h-96 max-w-96"}>{appIcon}</div>
           <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
             Test
           </div>
