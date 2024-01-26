@@ -2,6 +2,7 @@ import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export const size = {
   width: 32,
