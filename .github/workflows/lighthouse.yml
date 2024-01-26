@@ -13,4 +13,4 @@ jobs:
         with:
           urls: |
             https://nextjs-pwa-webpush-template.vercel.app
-          uploadArtifacts: false
+          uploadArtifacts: true
