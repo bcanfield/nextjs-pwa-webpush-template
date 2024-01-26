@@ -3,7 +3,6 @@ import { ImageResponse } from "next/og";
 import { appIcon } from "./custom-icons";
 
 export const runtime = "nodejs";
-
 export function generateImageMetadata() {
   return [
     {
