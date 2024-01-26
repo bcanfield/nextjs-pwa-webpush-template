@@ -1,5 +1,6 @@
+import AppIcon from "@/app/custom-icon";
 import { ImageResponse } from "next/og";
-// https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx
+
 export const runtime = "edge";
 
 export const alt = "lazyfasttrack";
@@ -9,14 +10,14 @@ export const size = {
 };
 export const contentType = "image/png";
 
-// Image generation
 export default async function Image() {
   return new ImageResponse(
     (
       <div
         style={{
           display: "flex",
-          fontSize: 60,
+          gap: 4,
+          fontSize: 40,
           color: "#f6f6f6",
           background: "black",
           width: "100%",
@@ -26,17 +27,18 @@ export default async function Image() {
           alignItems: "center",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          alt="avatar"
-          width="256"
-          src={"/next.svg"}
+        <div
           style={{
-            borderRadius: 128,
+            display: "flex",
+            width: 200,
+            height: 200,
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        />
-
-        <h1>lazyfasttrack</h1>
+        >
+          <AppIcon />
+        </div>
+        Next.js PWA WebPush Template
       </div>
     ),
     {
