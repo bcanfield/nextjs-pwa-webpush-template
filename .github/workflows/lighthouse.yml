@@ -8,15 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - name: Audit URLs using Lighthouse
-      #   uses: treosh/lighthouse-ci-action@v10
-      #   with:
-      #     urls: |
-      #       https://nextjs-pwa-webpush-template.vercel.app
-      #     uploadArtifacts: true
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v10
         with:
-          node-version: 18.x
-      - name: Lighthouse
-        run: npx lighthouse-badges --url https://nextjs-pwa-webpush-template-git-webpush-bcanfield.vercel.app/ -o test_results
+          urls: |
+            https://nextjs-pwa-webpush-template.vercel.app
+          uploadArtifacts: true
+          temporaryPublicStorage: true
