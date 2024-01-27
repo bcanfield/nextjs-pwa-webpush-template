@@ -4,7 +4,7 @@ import useUserAgent from "./useUserAgent";
 
 const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
   const { isMobile, isStandalone } = useUserAgent();
-  const [notificationsSupported, setNotificationsSupported] = useState(false);
+  const [notificationsSupported, setNotificationsSupported] = useState(true);
   const [userSubscription, setUserSubscription] = useLocalStorage(
     "user-subscription",
     ""

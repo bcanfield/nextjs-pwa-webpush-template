@@ -20,8 +20,6 @@ export default async function sendPushNotification({
   body: string;
 }) {
   noStore();
-
-  console.log({ subscription });
   return await webpush.sendNotification(
     subscription,
     JSON.stringify({
