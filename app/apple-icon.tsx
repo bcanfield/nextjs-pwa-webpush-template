@@ -1,6 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
-import AppIcon from "./_components/app-icon";
+import AppIcon from "./_icons/app-icon";
 
 export const runtime = "nodejs";
 
