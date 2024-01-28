@@ -23,4 +23,4 @@ jobs:
           git checkout -b lighthouse
           git add lighthouse_results
           git commit -m "Add lighthouse report"
-          git push origin lighthouse
+          git push origin lighthouse -f
