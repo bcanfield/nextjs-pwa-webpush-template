@@ -220,7 +220,7 @@ const mediaInfoArray: MediaInfo[] = [
 ];
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: siteConfig.url,
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -230,7 +230,6 @@ export const metadata: Metadata = {
   authors: siteConfig.authors,
   generator: "Next.js",
   keywords: siteConfig.keywords,
-  icons: [],
   creator: siteConfig.creator,
   publisher: "Vercel",
   robots: "index,follow",
