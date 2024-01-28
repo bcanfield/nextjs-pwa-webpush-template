@@ -1,5 +1,16 @@
+<img src="https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/lighthouse/lighthouse_results/lighthouse_pwa.svg">
+<img src="https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/lighthouse/lighthouse_results/lighthouse_best-practices.svg">
+<img src="https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/lighthouse/lighthouse_results/lighthouse_performance.svg">
+<img src="https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/lighthouse/lighthouse_results/lighthouse_accessibility.svg">
+<img src="https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/lighthouse/lighthouse_results/lighthouse_seo.svg">
+
 Splash Screen Generator:
 https://progressier.com/pwa-icons-and-ios-splash-screen-generator
+
+
+
+
+
 
 Maskable Icon Generator:
 https://progressier.com/maskable-icons-editor
