@@ -21,7 +21,8 @@ export default async function Icon() {
         </div>
       ),
       {
-        ...size,
+        width: 512,
+        height: 512,
       }
     );
   } catch (e: any) {

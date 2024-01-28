@@ -58,7 +58,6 @@ export default async function Icon({ id }: { id: string }) {
       {
         width: 512,
         height: 512,
-        debug: true,
       }
     );
   } catch (e: any) {
