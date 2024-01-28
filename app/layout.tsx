@@ -251,9 +251,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
-  userScalable: false,
+  // Uncomment the following line to prevent zooming on mobile devices
+  // userScalable: false,
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
