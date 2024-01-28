@@ -2,28 +2,25 @@ name: Lighthouse
 
 on:
   deployment_status:
+permissions:
+  contents: write
 jobs:
   run-e2es:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          urls: |
-            https://nextjs-pwa-webpush-template.vercel.app
-          budgetPath: ./budget.json # test performance budgets
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18.x
       - name: Lighthouse
         run: npx lighthouse-badges --url https://nextjs-pwa-webpush-template.vercel.app -o lighthouse_results
-      - name: Upload Lighthouse Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse_results
-          path: lighthouse_results
+      - name: Push to branch
+        run: |
+          git config user.name "bcanfield"
+          git config user.email "brandincanfield@gmail.com"
+          git checkout -b lighthouse
+          git add lighthouse_results
+          git commit -m "Add lighthouse report"
+          git push origin lighthouse -f
