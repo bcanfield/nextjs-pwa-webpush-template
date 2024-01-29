@@ -235,7 +235,7 @@ export const metadata: Metadata = {
   robots: "index,follow",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: siteConfig.name,
     startupImage: mediaInfoArray.map(
       ({ deviceHeight, deviceWidth, devicePixelRatio, orientation }) => {

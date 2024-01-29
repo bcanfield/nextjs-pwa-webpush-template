@@ -2,7 +2,7 @@ import { Metadata, MetadataRoute } from "next";
 
 export const siteConfig: SiteConfig = {
   name: "Next.js PWA WebPush Template",
-  shortName: "PWA Template",
+  shortName: "PWA",
   themeColor: "#18181b", // status or title bar color
   backgroundColor: "#18181b", // background color before stylesheets have loaded
   textColor: "#000000", // text color for opengraph images and splash screens
