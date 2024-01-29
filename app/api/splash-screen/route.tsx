@@ -1,4 +1,4 @@
-import AppIcon from "@/app/_icons/app-icon";
+import AppIcon from "@/app/_icons/custom-icon";
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
 

@@ -1,10 +1,10 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
-import AppIcon from "./_icons/app-icon";
+import AppIcon from "./_icons/custom-icon";
 
 export const runtime = "nodejs";
 
-export const alt = "Next.js PWA WebPush Template";
+export const alt = siteConfig.name;
 export const size = {
   width: 1200,
   height: 630,

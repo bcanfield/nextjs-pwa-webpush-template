@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import sendPushNotification from "../_actions/send-push-notification";
-import useServiceWorker from "../_hooks/useServiceWorker";
+import useServiceWorker from "../_hooks/usePushNotifications";
 
 import { NotificationIcon, Off, On } from "../_icons/other-icons";
 import InstallationPrompt from "./installation-prompt";
