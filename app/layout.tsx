@@ -263,7 +263,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="min-h-screen max-w-[1024px] flex overscroll-none mx-auto bg-gradient-to-b from-zinc-800 to-zinc-900 text-zinc-300">
+        {children}
+      </body>
     </html>
   );
 }

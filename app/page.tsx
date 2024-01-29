@@ -4,16 +4,14 @@ import { GithubIcon } from "./_icons/other-icons";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col gap-4 pt-4 items-center bg-gradient-to-b from-zinc-800 to-zinc-900 text-zinc-300">
-      <div className="flex flex-col items-center">
-        <Image
-          src="/icon/icon_xl"
-          alt="Vercel Logo"
-          width={100}
-          height={24}
-          priority
-        />
-      </div>
+    <main className="flex flex-auto flex-col items-center pt-8">
+      <Image
+        src="/icon/icon_xl"
+        alt="Vercel Logo"
+        width={100}
+        height={24}
+        priority
+      />
       <div className="flex flex-col w-full justify-center">
         <a
           href="https://github.com/bcanfield/nextjs-pwa-webpush-template"
@@ -25,9 +23,7 @@ export default function Home() {
           </span>
         </a>
       </div>
-      <div>
-        <NotificationManager vapidPublicKey={process.env.VAPID_PUBLIC_KEY} />
-      </div>
+      <NotificationManager vapidPublicKey={process.env.VAPID_PUBLIC_KEY} />
     </main>
   );
 }
