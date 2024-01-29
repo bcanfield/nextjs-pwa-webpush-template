@@ -3,10 +3,10 @@
 import { useState } from "react";
 import sendPushNotification from "../_actions/send-push-notification";
 import useServiceWorker from "../_hooks/useServiceWorker";
-const PWAPrompt = dynamic(() => import("react-ios-pwa-prompt"), { ssr: false });
 
-import dynamic from "next/dynamic";
 import { NotificationIcon, Off, On } from "../_icons/other-icons";
+import InstallationPrompt from "./installation-prompt";
+
 export const NotificationManager = ({
   vapidPublicKey,
 }: {
@@ -21,15 +21,20 @@ export const NotificationManager = ({
     isLoadingSubscription,
     subscribe,
   } = useServiceWorker({ vapidPublicKey });
-
   const [isLoadingSendNotification, setIsLoadingSendNotification] =
     useState(false);
 
   return (
     <div className="flex flex-col gap-4 items-center w-full p-4">
-      <PWAPrompt />
       <div className="flex flex-col gap-4 bg-zinc-800 p-2 rounded-md text-sm w-full font-semibold">
-        <span className="text-lg text-zinc-100">PWA</span>
+        <div className="flex justify-between">
+          <span className="text-lg text-zinc-100">PWA</span>
+          <InstallationPrompt
+            manifest-url="/manifest.webmanifest"
+            description="This site has app functionality. Add it to your Home Screen for extensive experience and easy access."
+          />
+        </div>
+
         <div className="flex justify-between">
           <span>Mobile Device: </span>
           {isMobile ? <On /> : <Off />}
@@ -50,7 +55,7 @@ export const NotificationManager = ({
           <span className="text-lg text-zinc-100">Notifications</span>
           <div className="flex gap-2 items-center">
             <button
-              className={`text-xs items-center w-full bg-zinc-400 text-zinc-800 font-semibold rounded flex gap-2 px-2 py-1.5 ${
+              className={`text-xs items-center w-full bg-[#f79e5d] text-zinc-800 font-semibold rounded flex gap-1 px-2 py-1.5 ${
                 isLoadingSubscription ? "animate-pulse" : ""
               }`}
               onClick={async (e) => {
@@ -68,7 +73,7 @@ export const NotificationManager = ({
               }}
             >
               <NotificationIcon />
-              <span className="col-span-2  text-start ">Enable</span>
+              Enable
             </button>
           </div>
         </div>

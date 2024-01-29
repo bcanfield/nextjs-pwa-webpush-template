@@ -22,7 +22,7 @@ export default async function Image() {
             <AppIcon />
           </div>
           <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
-            Test
+            {siteConfig.name}
           </div>
         </div>
       ),
