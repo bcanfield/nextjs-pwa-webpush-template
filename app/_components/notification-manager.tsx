@@ -76,73 +76,41 @@ export const NotificationManager = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 w-full">
-        <button
-          className={`bg-[#f79e5d] text-zinc-800 font-semibold py-2 px-4 rounded grid grid-cols-3 gap-2 ${
-            isLoadingSubscription ? "animate-pulse" : ""
-          }`}
-          onClick={() => {
-            elementRef.current?.showDialog();
-          }}
-        >
-          <div className="col-span-1 flex justify-end">
-            <InstructionsIcon />
-          </div>
-          <span className=" col-span-2  text-start">
-            Installation Instructions
-          </span>
-        </button>
-        <button
-          disabled={isLoadingSubscription}
-          className={`bg-[#f79e5d] text-zinc-800 font-semibold py-2 px-4 rounded grid grid-cols-3 gap-2 ${
-            isLoadingSubscription ? "animate-pulse" : ""
-          }`}
-          onClick={async (e) => {
-            if (!isMobile || !isStandalone || !notificationsSupported) {
-              alert(
-                "To enable notifications, you must be on a mobile device and have the app installed."
-              );
-            } else {
-              try {
-                await subscribe();
-              } catch (err) {
-                alert("There was an error enabling notifications.");
-              }
+      <button
+        className={`text-sm items-center w-full bg-[#f79e5d] text-zinc-800 font-semibold py-2 rounded flex gap-4 px-4 ${
+          isLoadingSubscription ? "animate-pulse" : ""
+        }`}
+        onClick={() => {
+          elementRef.current?.showDialog();
+        }}
+      >
+        <InstructionsIcon />
+        Installation Instructions
+      </button>
+      <button
+        className={`text-sm items-center w-full bg-[#f79e5d] text-zinc-800 font-semibold py-2 rounded flex gap-4 px-4 ${
+          isLoadingSubscription ? "animate-pulse" : ""
+        }`}
+        onClick={async (e) => {
+          if (!isMobile || !isStandalone || !notificationsSupported) {
+            alert(
+              "To enable notifications, you must be on a mobile device and have the app installed."
+            );
+          } else {
+            try {
+              await subscribe();
+            } catch (err) {
+              alert("There was an error enabling notifications.");
             }
-          }}
-        >
-          <div className="col-span-1 flex justify-end">
-            <NotificationIcon />
-          </div>
-          <span className=" col-span-2  text-start">Enable Notifications</span>
-        </button>
-        <button
-          className={`bg-[#f79e5d] text-zinc-800 font-semibold py-2 px-4 rounded grid grid-cols-3 gap-2  ${
-            isLoadingSendNotification ? "animate-pulse" : ""
-          }`}
-          disabled={isLoadingSendNotification}
-          onClick={async (e) => {
-            if (!userSubscription) {
-              alert("Please enable notifications.");
-            } else {
-              setIsLoadingSendNotification(true);
-              await sendPushNotification({
-                title: "Hello There!",
-                body: "This is a push notification.",
-                subscription: JSON.parse(userSubscription),
-              });
-              setIsLoadingSendNotification(false);
-            }
-          }}
-        >
-          <div className=" col-span-1 flex justify-end ">
-            <SendIcon />
-          </div>
-          <span className=" col-span-2  text-start ">
-            Send Test Notification
-          </span>
-        </button>
-      </div>
+          }
+        }}
+      >
+        <div className="col-span-1 flex justify-end">
+          <NotificationIcon />
+        </div>
+        <span className=" col-span-2  text-start">Enable Notifications</span>
+      </button>
+
       <div className="flex flex-col gap-2 bg-zinc-800 p-2 rounded-md text-sm w-full font-semibold">
         <span className="text-lg text-zinc-100">Notification Status</span>
         <div
@@ -166,6 +134,30 @@ export const NotificationManager = ({
           )}
         </div>
       </div>
+      <button
+        className={`text-sm items-center w-full bg-[#f79e5d] text-zinc-800 font-semibold py-2 rounded flex gap-4 px-4 ${
+          isLoadingSendNotification ? "animate-pulse" : ""
+        }`}
+        disabled={isLoadingSendNotification}
+        onClick={async (e) => {
+          if (!userSubscription) {
+            alert("Please enable notifications.");
+          } else {
+            setIsLoadingSendNotification(true);
+            await sendPushNotification({
+              title: "Hello There!",
+              body: "This is a push notification.",
+              subscription: JSON.parse(userSubscription),
+            });
+            setIsLoadingSendNotification(false);
+          }
+        }}
+      >
+        <div className=" col-span-1 flex justify-end ">
+          <SendIcon />
+        </div>
+        <span className=" col-span-2  text-start ">Send Test Notification</span>
+      </button>
     </div>
   );
 };
