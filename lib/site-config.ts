@@ -5,7 +5,7 @@ export const siteConfig: SiteConfig = {
   shortName: "PWA",
   themeColor: "#18181b", // status or title bar color
   backgroundColor: "#18181b", // background color before stylesheets have loaded
-  textColor: "#000000", // text color for opengraph images and splash screens
+  textColor: "#d4d4d8", // text color for opengraph images and splash screens
   description: "Example Next.js App Showcasing PWA and WebPush Notifications",
   authors: [{ name: "Brandin Canfield", url: "https://github.com/bcanfield" }],
   creator: "Brandin Canfield",

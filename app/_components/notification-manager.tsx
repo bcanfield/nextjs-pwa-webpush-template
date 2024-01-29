@@ -6,6 +6,7 @@ import useServiceWorker from "../_hooks/usePushNotifications";
 
 import { NotificationIcon, Off, On } from "../_icons/other-icons";
 import InstallationPrompt from "./installation-prompt";
+import { siteConfig } from "@/lib/site-config";
 
 export const NotificationManager = ({
   vapidPublicKey,
@@ -31,7 +32,7 @@ export const NotificationManager = ({
           <span className="text-lg text-zinc-100">PWA</span>
           <InstallationPrompt
             manifest-url="/manifest.webmanifest"
-            description="This site has app functionality. Add it to your Home Screen for extensive experience and easy access."
+            description={`Install ${siteConfig.name} to your device.`}
           />
         </div>
 
