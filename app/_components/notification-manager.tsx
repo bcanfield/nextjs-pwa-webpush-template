@@ -1,9 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { PWAInstallAttributes } from "@khmyznikov/pwa-install";
+import { useEffect, useRef, useState } from "react";
 import sendPushNotification from "../_actions/send-push-notification";
 import useServiceWorker from "../_hooks/useServiceWorker";
-import { NotificationIcon, SendIcon } from "../_icons/other-icons";
+import {
+  InstructionsIcon,
+  NotificationIcon,
+  SendIcon,
+} from "../_icons/other-icons";
 
 export const NotificationManager = ({
   vapidPublicKey,
@@ -19,27 +24,74 @@ export const NotificationManager = ({
     isLoadingSubscription,
     subscribe,
   } = useServiceWorker({ vapidPublicKey });
+  const elementRef = useRef();
+  const [shownDialog, setShownDialog] = useState(false);
 
   const [isLoadingSendNotification, setIsLoadingSendNotification] =
     useState(false);
+  useEffect(() => {
+    import("@khmyznikov/pwa-install");
+  }, []);
+  useEffect(() => {
+    if (elementRef.current && elementRef.current.showDialog) {
+      elementRef.current?.showDialog();
+      setShownDialog(true);
+    }
+  }, [elementRef, shownDialog]);
+
+  const pwaInstallAttributes: PWAInstallAttributes = {
+    "manifest-url": "/manifest.webmanifest",
+    "install-description":
+      "This site has app functionality. Add it to your Home Screen for extensive experience and easy access.",
+  };
+
   return (
-    <div className="flex flex-col gap-8 items-center w-96 p-4">
+    <div className="flex flex-col gap-4 items-center w-96">
+      <pwa-install ref={elementRef} {...pwaInstallAttributes}></pwa-install>
       <div className="flex flex-col gap-2 bg-zinc-800 p-2 rounded-md text-sm w-full font-semibold">
         <span className="text-lg text-zinc-100">Device Requirements</span>
         <div className="flex justify-between">
           <span>Mobile Device: </span>
-          {isMobile ? <span>yes</span> : <span>no</span>}
+          {isMobile ? (
+            <span>yes</span>
+          ) : (
+            <span className="text-red-400">no</span>
+          )}
         </div>
         <div className="flex justify-between">
           <span>App Installed: </span>
-          {isStandalone ? <span>yes</span> : <span>no</span>}
+          {isStandalone ? (
+            <span>yes</span>
+          ) : (
+            <span className="text-red-400">no</span>
+          )}
         </div>
         <div className="flex justify-between">
           <span>Notifications Supported:</span>
-          {notificationsSupported ? <span>yes</span> : <span>no</span>}
+          {notificationsSupported ? (
+            <span>yes</span>
+          ) : (
+            <span className="text-red-400">no</span>
+          )}
         </div>
       </div>
+
       <div className="flex flex-col gap-2 w-full">
+        <button
+          className={`bg-[#f79e5d] text-zinc-800 font-semibold py-2 px-4 rounded grid grid-cols-3 gap-2 ${
+            isLoadingSubscription ? "animate-pulse" : ""
+          }`}
+          onClick={() => {
+            elementRef.current?.showDialog();
+          }}
+        >
+          <div className="col-span-1 flex justify-end">
+            <InstructionsIcon />
+          </div>
+          <span className=" col-span-2  text-start">
+            Installation Instructions
+          </span>
+        </button>
         <button
           disabled={isLoadingSubscription}
           className={`bg-[#f79e5d] text-zinc-800 font-semibold py-2 px-4 rounded grid grid-cols-3 gap-2 ${
@@ -59,7 +111,7 @@ export const NotificationManager = ({
             }
           }}
         >
-          <div className=" col-span-1 flex justify-end">
+          <div className="col-span-1 flex justify-end">
             <NotificationIcon />
           </div>
           <span className=" col-span-2  text-start">Enable Notifications</span>
@@ -91,7 +143,6 @@ export const NotificationManager = ({
           </span>
         </button>
       </div>
-
       <div className="flex flex-col gap-2 bg-zinc-800 p-2 rounded-md text-sm w-full font-semibold">
         <span className="text-lg text-zinc-100">Notification Status</span>
         <div
@@ -100,11 +151,19 @@ export const NotificationManager = ({
           }`}
         >
           <span>Notifications Enabled:</span>
-          {notificationsEnabled ? <span>yes</span> : <span>no</span>}
+          {notificationsEnabled ? (
+            <span>yes</span>
+          ) : (
+            <span className="text-red-400">no</span>
+          )}
         </div>
         <div className="flex justify-between">
           <span>User Subscribed Successfully:</span>
-          {userSubscription ? <span>yes</span> : <span>no</span>}
+          {userSubscription ? (
+            <span>yes</span>
+          ) : (
+            <span className="text-red-400">no</span>
+          )}
         </div>
       </div>
     </div>
