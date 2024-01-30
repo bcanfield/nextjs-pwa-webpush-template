@@ -16,7 +16,7 @@ export default async function Image() {
     return new ImageResponse(
       (
         <div
-          tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
+          tw={`flex flex-col p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
         >
           <div tw={"flex h-full max-h-96 max-w-96"}>
             <AppIcon />
