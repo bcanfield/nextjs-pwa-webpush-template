@@ -1,5 +1,5 @@
-name: first-time-setup
-run-name: first time setup of repo
+name: First Time Setup
+run-name: First Time Setup of Repo
 
 on:
   # run when branch created (repo generated from template)
@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   first-time-setup:
+    name: First Time Setup
     # ensure run only once, when repo generated
     if: github.run_number == 1
 
@@ -19,15 +20,15 @@ jobs:
 
     steps:
       # get main branch repo contents
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
       # remove files not needed for user instance of template
-      - name: Remove unneeded files
+      - name: Remove Template Specific Files
         run: rm -rf .github && rm vercel.json
 
       # save changed files
-      - name: Push to branch
+      - name: Update Branch
         run: |
           git config user.name "bcanfield"
           git config user.email "brandincanfield@gmail.com"

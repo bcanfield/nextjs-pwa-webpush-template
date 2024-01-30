@@ -1,12 +1,14 @@
-name: "Release"
+name: Release
 
 on:
-  push:
-    branches: [main]
+  deployment_status:
+    branches:
+      - main
 
 jobs:
   release:
     name: Release
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
 
     permissions:
