@@ -4,7 +4,7 @@ import { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     theme_color: siteConfig.themeColor,
-    background_color: siteConfig.themeColor,
+    background_color: siteConfig.backgroundColor,
     icons: [
       {
         sizes: "16x16",
@@ -42,8 +42,8 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     dir: "auto",
     lang: "en-US",
-    name: "Next.js PWA WebPush Template",
-    short_name: "Next.js PWA WebPush Template",
+    name: siteConfig.name,
+    short_name: siteConfig.shortName,
     start_url: "/",
     scope: "/",
   };

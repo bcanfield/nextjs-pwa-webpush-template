@@ -4,7 +4,9 @@ import useUserAgent from "./useUserAgent";
 
 const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
   const { isMobile, isStandalone } = useUserAgent();
-  const [notificationsSupported, setNotificationsSupported] = useState(true);
+  const [notificationsSupported, setNotificationsSupported] = useState(false);
+  const [isLoadingSubscription, setIsLoadingSubscription] = useState(false);
+
   const [userSubscription, setUserSubscription] = useLocalStorage(
     "user-subscription",
     ""
@@ -15,8 +17,7 @@ const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
 
   useEffect(() => {
     setNotificationsSupported(
-      typeof window !== "undefined" &&
-        "Notification" in window &&
+      "Notification" in window &&
         "serviceWorker" in navigator &&
         "PushManager" in window
     );
@@ -49,6 +50,7 @@ const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
     if (!notificationsSupported) {
       alert("Notifications not supported in this browser");
     }
+    setIsLoadingSubscription(true);
     // Attempt to register the service worker when a user subscribes to notifications
     await navigator.serviceWorker
       .register("/service-worker.js", { scope: "/" })
@@ -85,7 +87,10 @@ const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
         function (err) {
           console.error("Unsuccessful service worker registration", err);
         }
-      );
+      )
+      .finally(() => {
+        setIsLoadingSubscription(false);
+      });
   };
 
   return {
@@ -95,6 +100,7 @@ const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
     isStandalone,
     notificationsSupported,
     subscribe,
+    isLoadingSubscription,
   };
 };
 

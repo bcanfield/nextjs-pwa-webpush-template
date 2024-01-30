@@ -1,14 +1,19 @@
-export const siteConfig = {
+import { Metadata, MetadataRoute } from "next";
+
+export const siteConfig: SiteConfig = {
   name: "Next.js PWA WebPush Template",
-  themeColor: "#fcd7a6",
-  textColor: "#000000",
+  shortName: "PWA",
+  themeColor: "#18181b", // status or title bar color
+  backgroundColor: "#18181b", // background color before stylesheets have loaded
+  textColor: "#d4d4d8", // text color for opengraph images and splash screens
   description: "Example Next.js App Showcasing PWA and WebPush Notifications",
   authors: [{ name: "Brandin Canfield", url: "https://github.com/bcanfield" }],
   creator: "Brandin Canfield",
-  url:
+  url: new URL(
     process.env.NODE_ENV === "development"
       ? "https://localhost:3000"
-      : "https://nextjs-pwa-webpush-template-git-webpush-bcanfield.vercel.app",
+      : "https://nextjs-pwa-webpush-template-git-webpush-bcanfield.vercel.app"
+  ),
   keywords: [
     "nextjs",
     "pwa",
@@ -21,3 +26,16 @@ export const siteConfig = {
     "app",
   ],
 };
+
+interface SiteConfig {
+  name: string;
+  shortName: MetadataRoute.Manifest["short_name"];
+  themeColor: MetadataRoute.Manifest["theme_color"];
+  backgroundColor: MetadataRoute.Manifest["background_color"];
+  textColor: string;
+  description?: MetadataRoute.Manifest["description"];
+  authors: Metadata["authors"];
+  creator: Metadata["creator"];
+  url: Metadata["metadataBase"];
+  keywords: Metadata["keywords"];
+}

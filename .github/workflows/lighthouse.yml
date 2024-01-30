@@ -2,6 +2,8 @@ name: Lighthouse
 
 on:
   deployment_status:
+    branches:
+      - main
 permissions:
   contents: write
 jobs:

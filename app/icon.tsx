@@ -1,6 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
-import { appIcon } from "./custom-icons";
+import AppIcon from "./_icons/custom-icon";
 
 export const runtime = "nodejs";
 export function generateImageMetadata() {
@@ -35,6 +35,8 @@ export function generateImageMetadata() {
       size: { width: 256, height: 256 },
       id: "icon_xl",
     },
+    // We are using the 2xl icon for the maskable apple-icon
+    // You'll see in the ImageResponse below, we are conditionally giving this one a background color so that it satisfies this requirement
     {
       contentType: "image/png",
       size: { width: 512, height: 512 },
@@ -52,7 +54,9 @@ export default async function Icon({ id }: { id: string }) {
             id === "icon_2xl" ? `bg-[${siteConfig.themeColor}]` : ""
           } w-full h-full p-4`}
         >
-          <div tw={"flex h-full"}>{appIcon}</div>
+          <div tw={"flex h-full"}>
+            <AppIcon />
+          </div>
         </div>
       ),
       {
