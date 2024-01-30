@@ -1,7 +1,7 @@
 <p align="center">
   <br><h1 align="center">Next.js PWA Webpush Template</h1>
   <p align="center">
-    A <strong>Progressive Web App</strong> setup with <strong>Push Notifications</strong> to give an elevated user experience across any device
+    A <strong>Progressive Web App</strong> setup with <strong>Push Notifications</strong> for better UX across devices
     </p>
    
 <div align="center">
@@ -18,11 +18,11 @@ Click the button to clone this repository and deploy it on Vercel
 
 
 ## Quick Start
-**Change the site config at [site-config.ts](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/lib/site-config.ts)** <br/>Changing values here will update your PWA config such as your Web Manifest, Metadata, and Generated Images
+**Customize the site config at [site-config.ts](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/lib/site-config.ts)** <br/>*Modifying values here will update your PWA config such as your Web Manifest, Metadata, and Generated Images*
 
-**Change your app icon in [custom-icon.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/_icons/custom-icon.tsx)**<br/> This icon will be used to generate almost all of the PWA visual assets
+**Change the app icon in [custom-icon.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/_icons/custom-icon.tsx)**<br/> *This icon will be used to generate almost all of the PWA visual assets*
 
-**Generate new Apple Splash Screens in [public/splash_screens](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/public/splash_screens)**<br/> We are using [this](https://progressier.com/pwa-icons-and-ios-splash-screen-generator) free generator. This should give you a zip file containing a folder called `splash_screens`, which you can use to replace the existing folder referenced above.
+**Generate new Apple Splash Screens in [public/splash_screens](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/public/splash_screens)**<br/> *We are using [this](https://progressier.com/pwa-icons-and-ios-splash-screen-generator) free generator. This will give you a zip file containing a folder called `splash_screens`, which you can use to replace the existing folder.*
 
 
 ## Key PWA Concepts
@@ -31,9 +31,8 @@ Click the button to clone this repository and deploy it on Vercel
 The required PWA metadata is taken care of in the [Manifest](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/manifest.ts) and the Metadata object in the [Root Layout](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/layout.tsx)
 
 ### Icons / Images
-We are generating most of the required PWA icons & images using [Next.js Image Generation](https://nextjs.org/docs/app/api-reference/functions/image-response). Which will pull in your custom svg from [custom-icon.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/_icons/custom-icon.tsx) and your config from [site-config.ts](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/lib/site-config.ts)
+We are generating most of the required PWA icons & images using [Next.js Image Generation](https://nextjs.org/docs/app/api-reference/functions/image-response). Which will pull in your custom svg from [custom-icon.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/_icons/custom-icon.tsx) and your config from [site-config.ts](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/lib/site-config.ts). See the list of generated assets below:
 
-Here is a list of the assets being generated:
 - Icons ([icon.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/icon.tsx))
 - Maskable Apple Icon ([apple-icon.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/apple-icon.tsx))
 - OpenGraph ([opengraph-image.tsx](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/opengraph-image.tsx))
@@ -74,6 +73,8 @@ VAPID_PRIVATE_KEY=0sXtucpaDfqQtIFDC3WZXZTdbjDSqrcBQ4J1DhTWEPA
 ## PWA Installation Prompt
 This example uses the [pwa-install](https://github.com/khmyznikov/pwa-install) library for the installation prompt at [installation-prompt.tsx ](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/_components/installation-prompt.tsx), but this can be easily replaced by another implementation.
 
+<br/>
+<br/>
 
 <div align="center">
   <img src="https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/lighthouse/lighthouse_results/lighthouse_best-practices.svg">
