@@ -28,7 +28,7 @@ jobs:
 
       # remove files not needed for user instance of template
       - name: Remove Template Specific Files
-        run: rm -rf .github && rm vercel.json
+        run: rm -rf .github
 
       # save changed files
       - name: Update Branch
