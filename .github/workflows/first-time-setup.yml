@@ -4,6 +4,7 @@ run-name: First Time Setup of Repo
 on:
   # run when branch created (repo generated from template)
   create:
+  push:
 
 # only keep latest run of this workflow
 concurrency:
