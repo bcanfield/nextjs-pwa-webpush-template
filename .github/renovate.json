@@ -1,0 +1,15 @@
+{
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "commitBody": "Change-type: {{updateType}}"
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "commitBody": "Change-type: {{updateType}}",
+      "automerge": true
+    }
+  ],
+  "prHourlyLimit": 15
+}
