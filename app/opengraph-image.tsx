@@ -1,10 +1,10 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
-import { appIcon } from "./custom-icons";
+import AppIcon from "./_icons/custom-icon";
 
 export const runtime = "nodejs";
 
-export const alt = "Next.js PWA WebPush Template";
+export const alt = siteConfig.name;
 export const size = {
   width: 1200,
   height: 630,
@@ -18,9 +18,11 @@ export default async function Image() {
         <div
           tw={`flex p-8 items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] text-[${siteConfig.textColor}]`}
         >
-          <div tw={"flex h-full max-h-96 max-w-96"}>{appIcon}</div>
+          <div tw={"flex h-full max-h-96 max-w-96"}>
+            <AppIcon />
+          </div>
           <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
-            Test
+            {siteConfig.name}
           </div>
         </div>
       ),

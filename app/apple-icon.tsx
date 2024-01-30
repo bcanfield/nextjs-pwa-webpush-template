@@ -1,6 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
 import { ImageResponse } from "next/og";
-import { appIcon } from "./custom-icons";
+import AppIcon from "./_icons/custom-icon";
 
 export const runtime = "nodejs";
 
@@ -15,9 +15,11 @@ export default async function Icon() {
     return new ImageResponse(
       (
         <div
-          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] p-2`}
+          tw={`flex items-center justify-center w-full h-full bg-[${siteConfig.themeColor}] p-24`}
         >
-          <div tw={"flex h-full"}>{appIcon}</div>
+          <div tw={"flex h-full"}>
+            <AppIcon />
+          </div>
         </div>
       ),
       {

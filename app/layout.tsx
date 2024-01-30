@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
-
-const inter = Inter({ subsets: ["latin"] });
+import SplashScreens from "@/lib/splash-screens";
 
 interface MediaInfo {
   deviceWidth: number;
@@ -220,7 +218,7 @@ const mediaInfoArray: MediaInfo[] = [
 ];
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: siteConfig.url,
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -230,28 +228,20 @@ export const metadata: Metadata = {
   authors: siteConfig.authors,
   generator: "Next.js",
   keywords: siteConfig.keywords,
-  icons: [],
   creator: siteConfig.creator,
   publisher: "Vercel",
   robots: "index,follow",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: siteConfig.name,
-    startupImage: mediaInfoArray.map(
-      ({ deviceHeight, deviceWidth, devicePixelRatio, orientation }) => {
-        return {
-          media: `screen and (device-width: ${deviceWidth}px) and (device-height: ${deviceHeight}px) and (-webkit-device-pixel-ratio: ${devicePixelRatio}) and (orientation: ${orientation})`,
-          url: `/api/splash-screen?deviceWidth=${deviceWidth}&deviceHeight=${deviceHeight}&devicePixelRatio=${devicePixelRatio}&orientation=${orientation}`,
-        };
-      }
-    ),
+    startupImage: SplashScreens,
   },
 };
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
-  // Uncomment the following line to prevent zooming on mobile devices
+  // Uncomment the following line to prevent zooming on mobile devices. Disallowing user scaling is not considered 'accessible', but could arguably lead to a better user experience.
   // userScalable: false,
   initialScale: 1,
   maximumScale: 5,
@@ -264,7 +254,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="min-h-screen max-w-[1024px] flex overscroll-none mx-auto bg-gradient-to-b from-zinc-800 to-zinc-900 text-zinc-300">
+        {children}
+      </body>
     </html>
   );
 }
