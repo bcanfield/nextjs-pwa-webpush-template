@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
+import SplashScreens from "@/lib/splash-screens";
 
 interface MediaInfo {
   deviceWidth: number;
@@ -234,20 +235,13 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
     title: siteConfig.name,
-    startupImage: mediaInfoArray.map(
-      ({ deviceHeight, deviceWidth, devicePixelRatio, orientation }) => {
-        return {
-          media: `screen and (device-width: ${deviceWidth}px) and (device-height: ${deviceHeight}px) and (-webkit-device-pixel-ratio: ${devicePixelRatio}) and (orientation: ${orientation})`,
-          url: `/api/splash-screen?deviceWidth=${deviceWidth}&deviceHeight=${deviceHeight}&devicePixelRatio=${devicePixelRatio}&orientation=${orientation}`,
-        };
-      }
-    ),
+    startupImage: SplashScreens,
   },
 };
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
-  // Uncomment the following line to prevent zooming on mobile devices
+  // Uncomment the following line to prevent zooming on mobile devices. Disallowing user scaling is not considered 'accessible', but could arguably lead to a better user experience.
   // userScalable: false,
   initialScale: 1,
   maximumScale: 5,
