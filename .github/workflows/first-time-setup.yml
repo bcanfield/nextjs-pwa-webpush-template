@@ -5,6 +5,8 @@ on:
   # run when branch created (repo generated from template)
   create:
   push:
+    branches:
+      - main
 
 # only keep latest run of this workflow
 concurrency:
