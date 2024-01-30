@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sendPushNotification from "../_actions/send-push-notification";
 import useServiceWorker from "../_hooks/usePushNotifications";
 
@@ -24,6 +24,14 @@ export const NotificationManager = ({
   } = useServiceWorker({ vapidPublicKey });
   const [isLoadingSendNotification, setIsLoadingSendNotification] =
     useState(false);
+
+  // Example of clearing the app badge
+  // This will clear it whenever they re-open the app
+  useEffect(() => {
+    try {
+      navigator.clearAppBadge();
+    } catch {}
+  }, []);
 
   return (
     <div className="flex flex-col gap-4 items-center w-full p-4">

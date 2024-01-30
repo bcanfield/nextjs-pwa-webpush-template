@@ -48,7 +48,7 @@ Currently, Apple requires you to provide a static image for every device width/h
 
 
 ### Service Worker
-The service worker is located at [service-worker.js](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/public/service-worker.js). This is required for PWA's in general, and also for using Push Notifications.
+The service worker is located at [service-worker.js](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/public/service-worker.js). This is required for PWA's in general, and required for Push Notifications and App Notification Badges.
 
 ## Web Push Notifications
 The [usePushNotifications](https://github.com/bcanfield/nextjs-pwa-webpush-template/blob/main/app/_hooks/usePushNotifications.tsx) hook takes care of service worker registration and subscribing a user to push notifications using the [web-push](https://www.npmjs.com/package/web-push) package
