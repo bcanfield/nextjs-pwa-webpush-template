@@ -28,9 +28,10 @@ export default function manifest(): MetadataRoute.Manifest {
       },
       {
         sizes: "256x256",
-        src: "/icon/icon_lg",
+        src: "/icon/icon_xl",
         type: "image/png",
       },
+      // Maskable icons must have a non-transparent background
       {
         purpose: "maskable",
         sizes: "512x512",

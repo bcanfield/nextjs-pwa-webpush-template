@@ -50,9 +50,7 @@ export default async function Icon({ id }: { id: string }) {
     return new ImageResponse(
       (
         <div
-          tw={`flex items-center justify-center ${
-            id === "icon_2xl" ? `bg-[${siteConfig.themeColor}]` : ""
-          } w-full h-full p-4`}
+          tw={`flex items-center justify-center bg-[${siteConfig.themeColor}]} w-full h-full p-4`}
         >
           <div tw={"flex h-full"}>
             <AppIcon />
