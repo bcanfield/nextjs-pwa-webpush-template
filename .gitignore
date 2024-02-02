@@ -37,3 +37,9 @@ next-env.d.ts
 
 certificates
 .env
+
+# next-pwa
+**/public/sw*
+**/public/worker*
+**/public/workbox*
+**/public/fallback*

@@ -51,9 +51,9 @@ const useServiceWorker = ({ vapidPublicKey }: { vapidPublicKey?: string }) => {
       alert("Notifications not supported in this browser");
     }
     setIsLoadingSubscription(true);
-    // Attempt to register the service worker when a user subscribes to notifications
+    // The service worker should already be registered, but this is a safeguard
     await navigator.serviceWorker
-      .register("/service-worker.js", { scope: "/" })
+      .register("/sw.js", { scope: "/" })
       .then(
         async function (reg) {
           await reg.update();
