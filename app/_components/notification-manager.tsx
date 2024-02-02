@@ -106,7 +106,7 @@ export const NotificationManager = ({
         }`}
         disabled={isLoadingSendNotification}
         onClick={async (e) => {
-          if (!userSubscription) {
+          if (!userSubscription || !notificationsEnabled) {
             alert("Please enable notifications.");
           } else {
             setIsLoadingSendNotification(true);
