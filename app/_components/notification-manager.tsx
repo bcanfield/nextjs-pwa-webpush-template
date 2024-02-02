@@ -119,7 +119,7 @@ export const NotificationManager = ({
           }
         }}
       >
-        <span className=" col-span-2  text-start ">Send Test Notification</span>
+        <span className="col-span-2  text-start ">Send Test Notification</span>
       </button>
     </div>
   );
