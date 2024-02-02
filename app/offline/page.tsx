@@ -16,7 +16,7 @@ export default function Offline() {
           priority
         />
         <div className="flex gap-2 justify-center items-center w-full">
-          You are offline
+          Offline
         </div>
       </Link>
     </main>
