@@ -106,7 +106,7 @@ export const NotificationManager = ({
         }`}
         disabled={isLoadingSendNotification}
         onClick={async (e) => {
-          if (!userSubscription) {
+          if (!userSubscription || !notificationsEnabled) {
             alert("Please enable notifications.");
           } else {
             setIsLoadingSendNotification(true);
@@ -119,7 +119,7 @@ export const NotificationManager = ({
           }
         }}
       >
-        <span className=" col-span-2  text-start ">Send Test Notification</span>
+        <span className="col-span-2  text-start ">Send Test Notification</span>
       </button>
     </div>
   );

@@ -21,8 +21,8 @@ export default async function Image() {
           <div tw={"flex h-full max-h-96 max-w-96"}>
             <AppIcon />
           </div>
-          <div tw="ml-2 text-4xl flex-auto flex items-center text-center justify-center ">
-            {siteConfig.name}
+          <div tw="ml-2 text-8xl flex-auto flex items-center text-center justify-center ">
+            {siteConfig.shortName}
           </div>
         </div>
       ),
