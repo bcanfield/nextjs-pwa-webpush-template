@@ -11,7 +11,7 @@
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.4",
     "@khmyznikov/pwa-install": "^0.5.0",
-    "next": "14.2.29",
+    "next": "14.2.30",
     "react": "^18",
     "react-dom": "^18",
     "web-push": "^3.6.7"
