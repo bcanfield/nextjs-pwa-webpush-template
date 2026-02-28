@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.20.0
+          node-version: 24.14.0
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
